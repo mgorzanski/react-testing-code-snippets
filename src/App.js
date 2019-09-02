@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
+import Basic from './components/basic/basic_test';
+import Counter from './components/Counter/Counter';
+import TestHook from './components/TestHook/TestHook';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [state, setState] = useState('Some Text');
+  const [name, setName] = useState('Moe');
+
+  const changeName = () => {
+    setName('Steve');
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Basic />
+      <h1>Counter</h1>
+      <Counter />
+      <h1>Basic Hook useState</h1>
+      <TestHook name={name} changeName={changeName} />
     </div>
   );
 }
